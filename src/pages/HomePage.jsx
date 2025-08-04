@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { InputName } from "../components/InputName";
 import { useAuth } from "../context/AuthProvider";
+import { ButtonJoin } from "../components/ButtonJoin";
+import { GeneralError } from "../components/GeneralError";
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -27,14 +29,8 @@ export const HomePage = () => {
 
       <InputName name={userName} setName={setUserName} />
 
-      <button
-        className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
-        onClick={handleJoin}
-      >
-        Join
-      </button>
-
-      {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+      <ButtonJoin onJoin={handleJoin} />
+      {error && <GeneralError error={error} />}
     </div>
   );
 };

@@ -1,51 +1,51 @@
-import { useEffect } from "react";
+import { useEffect, useCallback, useMemo } from "react";
 import { useAuth } from "../context/AuthProvider";
-import {useUserPoints} from '../hooks/useUserPoints'
+import { useUserPoints } from "../hooks/useUserPoints";
+import { ButtonLogout } from "../components/ButtonLogout";
+import { PointsComponent } from "../components/PointsComponent";
+import { AutoClickerComponent } from "../components/AutoClickerComponent";
+import { LoggedName } from "../components/LoggedName";
+
 export const GamePage = () => {
   const { name, logout } = useAuth();
-  const { points, autoclickers, addPoint, buyAutoclicker, stopAutoclicker } = useUserPoints(name);
+  const { points, autoclickers, addPoint, buyAutoclicker, stopAutoclicker } =
+    useUserPoints(name);
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     stopAutoclicker();
     logout();
-  };
+  }, [logout]);
 
   const handleClick = () => {
     addPoint();
   };
 
-  const handleBuy = () => {
+  const handleBuy = useCallback(() => {
     if (points >= autoclickers.nextPurchase) {
       buyAutoclicker();
     }
-  };
+  }, [points, autoclickers.nextPurchase]);
 
-    useEffect(() => {
+  useEffect(() => {
     return () => {
       stopAutoclicker();
     };
   }, []);
 
   return (
-    <div style={{ padding: "1rem", border: "1px solid #ccc", maxWidth: "300px" }}>
-      <h2>{name}</h2>
-      <p>Points: {points}</p>
-      <button onClick={handleClick}>Gain points</button>
+    <div className="relative p-6 max-w-md mx-auto bg-white shadow-md rounded-lg mt-8 space-y-4">
+      <div className="flex justify-between items-center mb-4">
+        <LoggedName name={name} />
+        <ButtonLogout onLogout={handleLogout} />
+      </div>
 
-      <hr />
-
-      <p>Autoclickers: {autoclickers.count}</p>
-      <p>Next price: {autoclickers.nextPurchase}</p>
-      <button onClick={handleBuy} disabled={points < autoclickers.nextPurchase}>
-        Buy autoclicker
-      </button>
-
-      <button
-        className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
-        onClick={handleLogout}
-      >
-        LOGOUT
-      </button>
+      <PointsComponent points={points} onGainPoint={handleClick} />
+      <AutoClickerComponent
+        count={autoclickers.count}
+        nextPurchase={autoclickers.nextPurchase}
+        points={points}
+        onBuy={buyAutoclicker}
+      />
     </div>
   );
 };

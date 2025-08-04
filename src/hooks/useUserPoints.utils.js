@@ -1,15 +1,15 @@
-const LOCAL_STORAGE_KEY = "userPointsData";
+const userDataStorageKey = "userPointsData";
 
 let inMemoryPoints = (() => {
   try {
-    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || {};
+    return JSON.parse(localStorage.getItem(userDataStorageKey)) || {};
   } catch {
     return {};
   }
 })();
 
 const saveToStorage = () => {
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(inMemoryPoints));
+  localStorage.setItem(userDataStorageKey, JSON.stringify(inMemoryPoints));
 };
 
 export const getUserData = (name) => {

@@ -11,7 +11,7 @@ import {
 export const useUserPoints = (name) => {
   const [points, setPoints] = useState(0);
   const [maxPointsObtained, setMaxPointsObtained] = useState(0);
-  const [autoclickers, setAutoclickers] = useState({ count: 0, nextPurchase: 100 });
+  const [autoclickers, setAutoclickers] = useState({ count: 0, nextPurchase: 10 });
 
   useEffect(() => {
     const { points, maxPointsObtained, autoclickers } = getUserData(name);
@@ -22,13 +22,11 @@ export const useUserPoints = (name) => {
 
   const intervalRef = useRef(null);
 
-
   useEffect(() => {
     if (autoclickers.count === 0) return;
 
     intervalRef.current = setInterval(() => {
       const newPoints = points + autoclickers.count;
-      console.log("estamos sumando: " + autoclickers.count);
       addPoint(autoclickers.count);
       setUserPoints(name, newPoints);
     }, 100);
