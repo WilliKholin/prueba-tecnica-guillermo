@@ -1,4 +1,3 @@
-// src/hooks/useUserRanking.js
 import { useMemo } from "react";
 import { getAllUserData } from "../hooks/useUserPoints.utils";
 
