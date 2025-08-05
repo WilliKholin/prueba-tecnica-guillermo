@@ -6,10 +6,10 @@ import { ButtonJoin } from "../components/ButtonJoin";
 import { GeneralError } from "../components/GeneralError";
 
 export const HomePage = () => {
+  
   const navigate = useNavigate();
 
   const [userName, setUserName] = useState("");
-
   const { login } = useAuth();
   const [error, setError] = useState("");
 

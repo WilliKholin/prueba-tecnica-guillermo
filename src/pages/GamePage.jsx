@@ -1,15 +1,19 @@
 import { useEffect, useCallback, useMemo } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { useUserPoints } from "../hooks/useUserPoints";
+import { useUsersRanking } from "../hooks/useUsersRanking";
 import { ButtonLogout } from "../components/ButtonLogout";
 import { PointsComponent } from "../components/PointsComponent";
 import { AutoClickerComponent } from "../components/AutoClickerComponent";
 import { LoggedName } from "../components/LoggedName";
+import { RankingComponent } from "../components/RankingComponent";
+
 
 export const GamePage = () => {
   const { name, logout } = useAuth();
   const { points, autoclickers, addPoint, buyAutoclicker, stopAutoclicker } =
     useUserPoints(name);
+  const ranking = useUsersRanking();
 
   const handleLogout = useCallback(() => {
     stopAutoclicker();
@@ -44,8 +48,9 @@ export const GamePage = () => {
         count={autoclickers.count}
         nextPurchase={autoclickers.nextPurchase}
         points={points}
-        onBuy={buyAutoclicker}
+        onBuy={handleBuy}
       />
+      <RankingComponent ranking={ranking}/>
     </div>
   );
 };

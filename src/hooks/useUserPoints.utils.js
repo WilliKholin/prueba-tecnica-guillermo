@@ -23,6 +23,10 @@ export const getUserData = (name) => {
   };
 };
 
+export const getAllUserData = () => {
+  return inMemoryPoints || []
+};
+
 export const setUserPoints = (name, points) => {
   const userData = getUserData(name);
   const updatedMax = Math.max(points, userData.maxPointsObtained);

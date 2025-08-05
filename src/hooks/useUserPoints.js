@@ -3,7 +3,6 @@ import {
   getUserData,
   setUserPoints,
   incrementAutoclicker,
-  getAutoclickerCount,
   getNextAutoclickerPrice,
 } from "./useUserPoints.utils";
 
