@@ -30,6 +30,7 @@ yarn test
 
 ##  Folder Structure
 
+<pre> ```text 
 src/
 ├── components/
 ├── context/
@@ -38,5 +39,6 @@ src/
 ├── router/
 ├── pages/
 └── App.jsx
+ ``` </pre>
 
 Each folder contains a __tests__ subfolder for unit and integration tests.
