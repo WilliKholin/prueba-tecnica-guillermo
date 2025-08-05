@@ -13,7 +13,7 @@ export const GamePage = () => {
   const { name, logout } = useAuth();
   const { points, autoclickers, addPoint, buyAutoclicker, stopAutoclicker } =
     useUserPoints(name);
-  const ranking = useUsersRanking();
+  const ranking = useUsersRanking(points);
 
   const handleLogout = useCallback(() => {
     stopAutoclicker();

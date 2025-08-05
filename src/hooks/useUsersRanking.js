@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { getAllUserData } from "../hooks/useUserPoints.utils";
 
-export const useUsersRanking = () => {
+export const useUsersRanking = (points = 0) => {
   const ranking = useMemo(() => {
     const allData = getAllUserData();
 
@@ -13,7 +13,7 @@ export const useUsersRanking = () => {
     usersArray.sort((a, b) => b.maxPoints - a.maxPoints);
 
     return usersArray;
-  }, []);
+  }, [points]);
 
   return ranking;
 };

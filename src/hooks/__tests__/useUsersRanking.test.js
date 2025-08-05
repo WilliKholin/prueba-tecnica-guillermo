@@ -19,7 +19,7 @@ describe("useUsersRanking hook", () => {
       carol: { maxPointsObtained: 100 },
     });
 
-    const { result } = renderHook(() => useUsersRanking());
+    const { result } = renderHook(() => useUsersRanking(0));
 
     expect(result.current).toEqual([
       { name: "bob", maxPoints: 150 },
@@ -31,7 +31,7 @@ describe("useUsersRanking hook", () => {
   it("should return empty array if no data", () => {
     getAllUserData.mockReturnValue({});
 
-    const { result } = renderHook(() => useUsersRanking());
+    const { result } = renderHook(() => useUsersRanking(0));
 
     expect(result.current).toEqual([]);
   });

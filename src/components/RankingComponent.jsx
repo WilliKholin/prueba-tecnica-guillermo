@@ -6,7 +6,7 @@ export const RankingComponent = ({ ranking }) => {
       <h2 className="text-xl font-semibold mb-2 text-center">Ranking - max points obtained</h2>
       <ul className="space-y-1">
         {ranking.map((user, index) => (
-        <RankingItem user={user} index={index}/>
+        <RankingItem key={user.name} user={user} index={index}/>
         ))}
       </ul>
     </div>
