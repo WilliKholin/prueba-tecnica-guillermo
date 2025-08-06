@@ -12,8 +12,8 @@ export const AutoClickerComponent = React.memo(({ count, nextPurchase, points, o
         disabled={!canBuy}
         className={`py-2 px-4 rounded transition ${
           !canBuy
-            ? "bg-gray-400 text-white cursor-not-allowed"
-            : "bg-purple-600 text-white hover:bg-purple-700"
+            ? "bg-gray-base text-white cursor-not-allowed"
+            : "bg-purple-base text-white hover:bg-purple-hover"
         }`}
       >
         Buy Autoclicker
