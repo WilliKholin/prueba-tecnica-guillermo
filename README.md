@@ -4,6 +4,12 @@ This project is a technical test built using **React** and **Vite**.
 
 ---
 
+## Deployment
+
+The application is deployed in Vercel and you can access it with the following link: https://prueba-tecnica-guillermo.vercel.app/home
+
+---
+
 ## Getting Started
 
 To clone and run the project locally:
@@ -30,7 +36,7 @@ yarn test
 
 ##  Folder Structure
 
-<pre> ```text 
+<pre>
 src/
 ├── components/
 ├── context/
@@ -39,6 +45,6 @@ src/
 ├── router/
 ├── pages/
 └── App.jsx
- ``` </pre>
+</pre>
 
 Each folder contains a __tests__ subfolder for unit and integration tests.
